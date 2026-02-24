@@ -1,0 +1,18 @@
+name: PR Approval Tracker
+on:
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  track-approval:
+    runs-on: ubuntu-latest
+    if: github.event.review.state == 'approved'
+    permissions:
+      pull-requests: read
+      organization: read
+    steps:
+      - uses: lukas-kuntze/devx-action-pr-approval-tracker@feature/project-setup
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          qa-team: 'lukas-kuntze-test/test-qs'
