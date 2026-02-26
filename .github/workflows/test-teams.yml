@@ -1,6 +1,6 @@
 on:
   pull_request_review:
-    types: [submitted]
+    types: [ submitted]
 
 jobs:
   track-approval:
@@ -14,3 +14,4 @@ jobs:
           github-token: ${{ secrets.ORG_TOKEN }}
           teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
           qa-team: 'lukas-kuntze-test/test-qs'
+          user-mapping: 'lukas-kuntze:lukas.kuntze@medifoxdan.de'
